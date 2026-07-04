@@ -68,16 +68,40 @@
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
   }
 
+  /* ---------- SCROLL ANIMATIONS ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger delays for grid items */
+  .trust-card:nth-child(1), .why-card:nth-child(1), .room-card:nth-child(1) { transition-delay: 0.1s; }
+  .trust-card:nth-child(2), .why-card:nth-child(2), .room-card:nth-child(2) { transition-delay: 0.2s; }
+  .why-card:nth-child(3), .room-card:nth-child(3) { transition-delay: 0.3s; }
+
   /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:100;
     background:rgba(251,248,241,.86);
     backdrop-filter:blur(10px);
     border-bottom:1px solid rgba(36,64,47,.1);
+    transition: all 0.3s ease;
+  }
+  header.scrolled {
+    background:rgba(251,248,241,.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   }
   nav.wrap{
     display:flex; align-items:center; justify-content:space-between;
     padding-top:16px; padding-bottom:16px;
+    transition: padding 0.3s ease;
+  }
+  header.scrolled nav.wrap {
+    padding-top:12px; padding-bottom:12px;
   }
   .brand{
     font-family:var(--font-display);
@@ -92,11 +116,13 @@
   .nav-links a{
     text-decoration:none; font-size:.92rem; font-weight:600; color:var(--forest-2);
     position:relative; padding-bottom:4px;
+    transition: color 0.2s ease;
   }
   .nav-links a::after{
     content:""; position:absolute; left:0; bottom:0; height:2px; width:0;
     background:var(--gold); transition:width .25s ease;
   }
+  .nav-links a:hover { color: var(--gold); }
   .nav-links a:hover::after{width:100%;}
   .nav-right{display:flex; align-items:center; gap:18px;}
   .lang-switch{display:flex; gap:4px; background:var(--mist); border-radius:100px; padding:4px;}
@@ -107,15 +133,19 @@
   }
   .lang-switch button.active{background:var(--forest); color:var(--paper);}
   .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
-  .nav-toggle span{display:block; width:22px; height:2px; background:var(--forest); margin:5px 0;}
+  .nav-toggle span{
+    display:block; width:22px; height:2px; background:var(--forest); margin:5px 0;
+    transition: all 0.3s ease;
+  }
 
   @media (max-width:860px){
     .nav-links{
       position:fixed; inset:64px 0 auto 0; background:var(--paper); flex-direction:column;
       padding:24px 28px; gap:18px; border-bottom:1px solid rgba(36,64,47,.1);
-      transform:translateY(-120%); transition:transform .3s ease; box-shadow:0 20px 30px rgba(0,0,0,.06);
+      transform:translateY(-120%); transition:transform .4s cubic-bezier(0.25, 1, 0.5, 1); 
+      box-shadow:0 20px 30px rgba(0,0,0,.06); opacity: 0; visibility: hidden;
     }
-    .nav-links.open{transform:translateY(0);}
+    .nav-links.open{transform:translateY(0); opacity: 1; visibility: visible;}
     .nav-toggle{display:block;}
   }
 
@@ -136,25 +166,38 @@
     padding:88px 0 60px;
     display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
   }
-  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; font-weight:600;}
+  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; font-weight:600; animation: fadeUp 1s ease forwards;}
+  .hero .eyebrow { animation: fadeUp 0.8s ease forwards; }
   .hero .accent{color:var(--gold); font-style:italic;}
-  .hero p.sub{font-size:1.05rem; color:var(--forest-2); max-width:46ch; margin:22px 0 34px;}
-  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero p.sub{font-size:1.05rem; color:var(--forest-2); max-width:46ch; margin:22px 0 34px; animation: fadeUp 1.2s ease forwards; opacity: 0;}
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap; animation: fadeUp 1.4s ease forwards; opacity: 0;}
+  
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
   .btn{
     display:inline-flex; align-items:center; gap:10px;
     padding:14px 26px; border-radius:100px; font-weight:700; font-size:.92rem;
-    text-decoration:none; cursor:pointer; border:1px solid transparent; transition:.25s ease;
+    text-decoration:none; cursor:pointer; border:1px solid transparent; transition: all .3s ease;
   }
   .btn-primary{background:var(--forest); color:var(--paper);}
-  .btn-primary:hover{background:var(--forest-2); transform:translateY(-1px);}
+  .btn-primary:hover{background:var(--forest-2); transform:translateY(-3px); box-shadow: 0 10px 20px rgba(36,64,47,0.15);}
   .btn-ghost{border-color:var(--forest); color:var(--forest);}
-  .btn-ghost:hover{background:var(--forest); color:var(--paper);}
+  .btn-ghost:hover{background:var(--forest); color:var(--paper); transform:translateY(-3px);}
 
-  .stat-row{display:flex; gap:36px; margin-top:46px; flex-wrap:wrap;}
+  .stat-row{display:flex; gap:36px; margin-top:46px; flex-wrap:wrap; animation: fadeUp 1.6s ease forwards; opacity: 0;}
   .stat-row div{font-family:var(--font-mono); font-size:.76rem; color:var(--forest-2); max-width:150px; line-height:1.5;}
   .stat-row strong{display:block; font-family:var(--font-display); font-size:1.15rem; color:var(--forest); font-weight:600; margin-bottom:4px;}
 
-  .hero-art{position:relative; aspect-ratio:1/1.05;}
+  .hero-art{position:relative; aspect-ratio:1/1.05; animation: fadeLeft 1.5s ease forwards; opacity: 0;}
+  @keyframes fadeLeft {
+    0% { opacity: 0; transform: translateX(40px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  .hero-art img { transition: transform 0.5s ease; }
+  .hero-art:hover img { transform: scale(1.02) rotate(-1deg); }
 
   /* ---------- SECTION GENERIC ---------- */
   section{padding:96px 0;}
@@ -171,8 +214,9 @@
   .trust-card{
     display:flex; align-items:center; gap:22px;
     background:var(--paper); border:1px solid rgba(36,64,47,.12); border-radius:var(--radius);
-    padding:26px 28px;
+    padding:26px 28px; transition: all 0.3s ease;
   }
+  .trust-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(36,64,47,.08); border-color: var(--gold); }
   .trust-score{
     font-family:var(--font-display); font-weight:700; font-size:2.3rem; color:var(--forest);
     line-height:1; white-space:nowrap;
@@ -193,16 +237,20 @@
   .leaf-frame{
     background:linear-gradient(160deg, var(--forest) 0%, var(--forest-2) 100%);
     border-radius:var(--radius); padding:34px; color:var(--paper);
+    position: relative; overflow: hidden;
   }
+  .leaf-frame img { transition: transform 0.6s ease; }
+  .leaf-frame:hover img { transform: scale(1.05); }
 
   /* ---------- WHY CARDS ---------- */
   .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
   .why-card{
     background:var(--paper); border:1px solid rgba(36,64,47,.12); border-radius:var(--radius);
-    padding:32px 28px; transition:.25s ease;
+    padding:32px 28px; transition:.3s cubic-bezier(0.25, 1, 0.5, 1);
   }
-  .why-card:hover{transform:translateY(-4px); box-shadow:0 18px 32px rgba(36,64,47,.1); border-color:transparent;}
-  .why-card .icon{margin-bottom:18px;}
+  .why-card:hover{transform:translateY(-8px); box-shadow:0 18px 32px rgba(36,64,47,.1); border-color:var(--gold);}
+  .why-card .icon{margin-bottom:18px; transition: transform 0.3s ease;}
+  .why-card:hover .icon { transform: scale(1.1); }
   .why-card h3{font-size:1.18rem; font-weight:600; margin-bottom:10px;}
   .why-card p{color:var(--forest-2); font-size:.95rem; margin:0;}
 
@@ -210,19 +258,24 @@
   .room-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
   .room-card{
     border-radius:var(--radius); overflow:hidden; background:var(--paper);
-    border:1px solid rgba(36,64,47,.12);
+    border:1px solid rgba(36,64,47,.12); transition: all 0.3s ease;
   }
+  .room-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(36,64,47,0.1); }
   .room-visual{
     height:180px; position:relative;
     background:linear-gradient(135deg, var(--sage) 0%, var(--forest) 100%);
+    overflow: hidden;
   }
+  .room-visual video { transition: transform 0.5s ease; }
+  .room-card:hover .room-visual video { transform: scale(1.05); }
   .room-visual svg{position:absolute; bottom:0; left:0; width:100%; opacity:.7;}
   .room-cap{
     position:absolute; top:14px; left:14px; z-index:2;
     background:rgba(27,38,32,.55); backdrop-filter:blur(3px);
     color:var(--paper); font-family:var(--font-mono); font-size:.7rem; letter-spacing:.04em;
-    padding:6px 12px; border-radius:100px;
+    padding:6px 12px; border-radius:100px; transition: background 0.3s ease;
   }
+  .room-card:hover .room-cap { background: var(--forest); }
   body[dir="rtl"] .room-cap{left:auto; right:14px;}
   .rooms-note{
     display:inline-flex; align-items:center; gap:10px; margin-top:6px;
@@ -239,25 +292,51 @@
   }
 
   /* ---------- GALLERY ---------- */
-  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:14px;}
-  .gallery-grid div{border-radius:12px; position:relative; overflow:hidden;}
-  .gallery-grid div span{
-    position:absolute; bottom:10px; left:12px; font-family:var(--font-mono); font-size:.66rem;
-    color:rgba(255,255,255,.85); letter-spacing:.04em;
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; gap:16px;}
+  .gallery-grid div{
+    border-radius:12px; position:relative; overflow:hidden; cursor: pointer;
+    opacity: 0; transform: scale(0.95); transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
-  .g1{grid-column:span 2; grid-row:span 2; background:linear-gradient(150deg,#3A5B41,#1B2620);}
-  .g2{background:linear-gradient(150deg,#B4872F,#7C5A22);}
-  .g3{background:linear-gradient(150deg,#93A98D,#4B6350);}
-  .g4{background:linear-gradient(150deg,#9C5636,#5C2F1E);}
-  .g5{grid-column:span 2; background:linear-gradient(150deg,#2E4F38,#7C9A72);}
+  .gallery-grid.active div { opacity: 1; transform: scale(1); }
+  .gallery-grid div:nth-child(1) { transition-delay: 0.1s; }
+  .gallery-grid div:nth-child(2) { transition-delay: 0.2s; }
+  .gallery-grid div:nth-child(3) { transition-delay: 0.3s; }
+  .gallery-grid div:nth-child(4) { transition-delay: 0.4s; }
+
+  .gallery-grid div img { transition: transform 0.5s ease, filter 0.3s ease; filter: brightness(0.9); }
+  .gallery-grid div:hover img { transform: scale(1.1); filter: brightness(1); }
+  
+  .gallery-grid div::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+    opacity: 0.8; transition: opacity 0.3s ease;
+  }
+  .gallery-grid div:hover::after { opacity: 1; }
+
+  .gallery-grid div span{
+    position:absolute; bottom:14px; left:16px; font-family:var(--font-mono); font-size:.75rem; font-weight: 600;
+    color:var(--paper); letter-spacing:.04em; z-index: 2;
+    transform: translateY(10px); opacity: 0.8; transition: all 0.3s ease;
+  }
+  .gallery-grid div:hover span { transform: translateY(0); opacity: 1; }
+  
+  .g1{grid-column:span 2; grid-row:span 2;}
 
   /* ---------- CONTACT ---------- */
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
-  .contact-card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:var(--radius); padding:32px;}
+  .contact-card{
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); 
+    border-radius:var(--radius); padding:32px; backdrop-filter: blur(5px);
+  }
   .contact-row{display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;}
   .contact-row .label{font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:#D9BE7A; min-width:110px;}
-  .map-frame{border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.16); height:340px;}
-  .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(.2) contrast(1.05);}
+  .map-frame{
+    border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.16); 
+    height:340px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); transition: transform 0.3s ease;
+  }
+  .map-frame:hover { transform: translateY(-5px); }
+  .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(.1) contrast(1.05); transition: filter 0.3s ease;}
+  .map-frame:hover iframe { filter:grayscale(0) contrast(1); }
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--ink); color:var(--sage); padding:44px 0; font-size:.85rem;}
@@ -268,14 +347,14 @@
     .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
     .why-grid, .room-grid{grid-template-columns:1fr;}
     .gallery-grid{grid-template-columns:repeat(2,1fr);}
-    .g1,.g5{grid-column:span 2;}
+    .g1{grid-column:span 2;}
     .stat-row{gap:24px;}
   }
 </style>
 </head>
 <body>
 
-<header>
+<header id="mainHeader">
   <nav class="wrap">
     <div class="brand"><span class="dot">✦</span> <span data-i18n="brandName">Balekoğlu Apart</span></div>
     <ul class="nav-links" id="navLinks">
@@ -329,15 +408,15 @@
 
 <!-- TRUST / AWARDS -->
 <section class="trust">
-  <div class="wrap trust-grid">
-    <div class="trust-card">
+  <div class="wrap trust-grid reveal">
+    <div class="trust-card reveal">
       <div class="trust-score">9,1<sup>/10</sup></div>
       <div class="trust-meta">
         <h4 data-i18n="trust.booking.title">Booking.com Traveller Review Award 2026</h4>
         <p data-i18n="trust.booking.sub">Misafir yorumlarına dayalı ödül</p>
       </div>
     </div>
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <div>
         <div class="trust-score">4,6<sup>/5</sup></div>
         <div class="trust-stars">
@@ -359,10 +438,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
-    <div class="leaf-frame">
-      <img src="assets/hakkimizda.png" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:auto; border-radius:12px;">
+    <div class="leaf-frame reveal">
+      <img src="assets/hakkimizda.png" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
     </div>
-    <div>
+    <div class="reveal">
       <div class="eyebrow" data-i18n="about.eyebrow">HAKKIMIZDA</div>
       <h2 data-i18n="about.title">Trabzon'un yeşiline açılan, sıcak bir ev</h2>
       <p data-i18n="about.p1">Balekoğlu Apart, Trabzon'un tam merkezinde; meydana 10 dakika, havalimanına ise 2 dakika mesafede yer alan aile işletmesi bir apart oteldir. Şehrin kalbinde kalmak, alışverişe ve ulaşıma kolayca erişmek isteyen misafirlerimizi ağırlamaktan mutluluk duyuyoruz.</p>
@@ -374,26 +453,26 @@
 <!-- WHY -->
 <section id="why" style="background:var(--mist);">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow" data-i18n="why.eyebrow">NEDEN BALEKOĞLU</div>
       <h2 data-i18n="why.title">Karadeniz'i en iyi şekilde yaşayın</h2>
     </div>
     <div class="why-grid">
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="icon">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M4 30 L14 16 L20 24 L28 12 L36 30" stroke="#B4872F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
         </div>
         <h3 data-i18n="why.c1t">Meydana 10 Dakika</h3>
         <p data-i18n="why.c1d">Şehir merkezine ve meydana yürüyerek ya da kısa bir araç yolculuğuyla kolayca ulaşın.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="icon">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M4 26 C10 20 16 20 20 26 C24 20 30 20 36 26" stroke="#B4872F" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="12" r="5" stroke="#B4872F" stroke-width="2.5"/></svg>
         </div>
         <h3 data-i18n="why.c2t">Havalimanına 2 Dakika</h3>
         <p data-i18n="why.c2d">Trabzon Havalimanı'na sadece birkaç dakika mesafede, uçuşlarınıza rahatlıkla yetişin.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal">
         <div class="icon">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4 L34 12 V26 L20 36 L6 26 V12 Z" stroke="#B4872F" stroke-width="2.5" stroke-linejoin="round"/></svg>
         </div>
@@ -407,13 +486,13 @@
 <!-- ROOMS -->
 <section id="rooms">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow" data-i18n="rooms.eyebrow">KONAKLAMA SEÇENEKLERİ</div>
       <h2 data-i18n="rooms.title">Size uygun oda, sizin konforunuz</h2>
       <div class="rooms-note" data-i18n="rooms.note">❄ Tüm odalarımızda klima standart olarak sunulur</div>
     </div>
     <div class="room-grid">
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r1cap">1-2 Kişilik</span>
           <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
@@ -430,7 +509,7 @@
           </div>
         </div>
       </div>
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r2cap">2-3 Kişilik</span>
           <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
@@ -447,7 +526,7 @@
           </div>
         </div>
       </div>
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r3cap">5-6 Kişilik</span>
           <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
@@ -471,25 +550,22 @@
 <!-- GALLERY -->
 <section id="gallery" style="background:var(--mist);">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow" data-i18n="gallery.eyebrow">GALERİ</div>
       <h2 data-i18n="gallery.title">Balekoğlu'ndan kareler</h2>
     </div>
-    <div class="gallery-grid">
+    <div class="gallery-grid reveal-gallery">
       <div class="g1"><span data-i18n="gallery.tag1">Dış Cephe</span>
-        <img src="assets/discephe.jpg" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/hakkimizda.png" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover;">
       </div>
-      <div class="g2"><span data-i18n="gallery.tag2">Salon</span>
-        <img src="assets/salon.jpg" alt="Balekoğlu Apart Salon" style="width:100%; height:100%; object-fit:cover;">
+      <div><span data-i18n="gallery.tag2">Salon</span>
+        <img src="assets/salon.png" alt="Balekoğlu Apart Salon" style="width:100%; height:100%; object-fit:cover;">
       </div>
-      <div class="g3"><span data-i18n="gallery.tag3">Mutfak</span>
-        <img src="assets/mutfak.jpg" alt="Balekoğlu Apart Mutfak" style="width:100%; height:100%; object-fit:cover;">
+      <div><span data-i18n="gallery.tag3">Mutfak</span>
+        <img src="assets/mutfak.png" alt="Balekoğlu Apart Mutfak" style="width:100%; height:100%; object-fit:cover;">
       </div>
-      <div class="g4"><span data-i18n="gallery.tag4">Balkon</span>
-        <img src="assets/balkon.jpg" alt="Balekoğlu Apart Balkon" style="width:100%; height:100%; object-fit:cover;">
-      </div>
-      <div class="g5"><span data-i18n="gallery.tag5">Manzara</span>
-        <img src="assets/manzara.jpg" alt="Balekoğlu Apart Manzara" style="width:100%; height:100%; object-fit:cover;">
+      <div><span data-i18n="gallery.tag4">Yatak Odası</span>
+        <img src="assets/yatakodasi.png" alt="Balekoğlu Apart Yatak Odası" style="width:100%; height:100%; object-fit:cover;">
       </div>
     </div>
   </div>
@@ -498,29 +574,28 @@
 <!-- CONTACT -->
 <section id="contact" class="band-forest">
   <div class="wrap contact-grid">
-    <div>
+    <div class="reveal">
       <div class="eyebrow" data-i18n="contact.eyebrow">İLETİŞİM</div>
       <h2 data-i18n="contact.title">Sizi ağırlamak için sabırsızlanıyoruz</h2>
       <p style="color:#C7D6C2; max-width:44ch; margin:18px 0 30px;" data-i18n="contact.p">Rezervasyon ve bilgi almak için bize WhatsApp, telefon veya e-posta ile ulaşabilirsiniz.</p>
       <div class="contact-card">
         <div class="contact-row">
           <span class="label" data-i18n="contact.addressLabel">ADRES</span>
-          <span data-i18n="contact.address">Trabzon, Türkiye — [Tam adres buraya eklenecek]</span>
+          <span data-i18n="contact.address">Trabzon, Türkiye — Konaklar Mahallesi Saat Sokak No:13</span>
         </div>
         <div class="contact-row">
           <span class="label" data-i18n="contact.phoneLabel">TELEFON</span>
-          <span>+90 5XX XXX XX XX</span>
+          <span>+90 535 953 92 61</span>
         </div>
         <div class="contact-row">
           <span class="label" data-i18n="contact.emailLabel">E-POSTA</span>
-          <span>info@balekogluapart.com</span>
+          <span>balekogluapart@gmail.com</span>
         </div>
-        <a href="https://wa.me/905XXXXXXXXX" class="btn btn-primary" style="margin-top:10px; background:var(--gold);" data-i18n="contact.cta">WhatsApp'tan Yazın</a>
+        <a href="https://wa.me/905359539261" class="btn btn-primary" style="margin-top:10px; background:var(--gold);" data-i18n="contact.cta">WhatsApp'tan Yazın</a>
       </div>
     </div>
-    <div class="map-frame">
-      <iframe src="https://www.google.com/maps?q=Trabzon&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    <div class="map-frame reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3854.6684642204746!2d39.7839692!3d40.990626899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40643b4d8078480b%3A0x5ddefd58386cd0b1!2zQmFsZWtvxJ9sdSBBcGFydG1hbsSx!5e1!3m2!1str!2str!4v1783178614378!5m2!1str!2str" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </div>
 </section>
 
@@ -532,6 +607,7 @@
 </footer>
 
 <script>
+// --- İÇERİK VERİLERİ (İngilizce ve Arapça Güncellendi) ---
 const i18n = {
   tr: {
     brandName: "Balekoğlu Apart",
@@ -559,10 +635,10 @@ const i18n = {
     "rooms.r3t":"Geniş Aile Odası","rooms.r3d":"Kalabalık aileler için geniş balkonlu, manzaralı özel bir konaklama deneyimi.",
     "rooms.tag.ac":"Klima","rooms.tag.kitchen":"Mutfak","rooms.tag.wifi":"Wi-Fi","rooms.tag.balcony":"Balkon","rooms.tag.washer":"Çamaşır Makinesi","rooms.tag.view":"Manzara",
     "gallery.eyebrow":"GALERİ","gallery.title":"Balekoğlu'ndan kareler",
-    "gallery.tag1":"Dış Cephe","gallery.tag2":"Salon","gallery.tag3":"Mutfak","gallery.tag4":"Balkon","gallery.tag5":"Manzara",
+    "gallery.tag1":"Dış Cephe","gallery.tag2":"Salon","gallery.tag3":"Mutfak","gallery.tag4":"Yatak Odası",
     "contact.eyebrow":"İLETİŞİM","contact.title":"Sizi ağırlamak için sabırsızlanıyoruz",
     "contact.p":"Rezervasyon ve bilgi almak için bize WhatsApp, telefon veya e-posta ile ulaşabilirsiniz.",
-    "contact.addressLabel":"ADRES","contact.address":"Trabzon, Türkiye — [Tam adres buraya eklenecek]",
+    "contact.addressLabel":"ADRES","contact.address":"Konaklar Mah. Saat Sok. No:13, Ortahisar / Trabzon",
     "contact.phoneLabel":"TELEFON","contact.emailLabel":"E-POSTA","contact.cta":"WhatsApp'tan Yazın",
     "footer.copy":'© <span id="year"></span> Balekoğlu Apart. Tüm hakları saklıdır.'
   },
@@ -592,10 +668,10 @@ const i18n = {
     "rooms.r3t":"Large Family Room","rooms.r3d":"A special stay for bigger families, with a wide balcony and a view.",
     "rooms.tag.ac":"Air Conditioning","rooms.tag.kitchen":"Kitchen","rooms.tag.wifi":"Wi-Fi","rooms.tag.balcony":"Balcony","rooms.tag.washer":"Washing Machine","rooms.tag.view":"View",
     "gallery.eyebrow":"GALLERY","gallery.title":"Moments from Balekoğlu",
-    "gallery.tag1":"Exterior","gallery.tag2":"Living Room","gallery.tag3":"Kitchen","gallery.tag4":"Balcony","gallery.tag5":"View",
+    "gallery.tag1":"Exterior","gallery.tag2":"Living Room","gallery.tag3":"Kitchen","gallery.tag4":"Bedroom",
     "contact.eyebrow":"CONTACT","contact.title":"We can't wait to host you",
     "contact.p":"Reach us via WhatsApp, phone or email for reservations and information.",
-    "contact.addressLabel":"ADDRESS","contact.address":"Trabzon, Türkiye — [Full address to be added]",
+    "contact.addressLabel":"ADDRESS","contact.address":"Konaklar Mah. Saat Sok. No:13, Ortahisar / Trabzon, Türkiye",
     "contact.phoneLabel":"PHONE","contact.emailLabel":"EMAIL","contact.cta":"Message on WhatsApp",
     "footer.copy":'© <span id="year"></span> Balekoğlu Apart. All rights reserved.'
   },
@@ -625,10 +701,10 @@ const i18n = {
     "rooms.r3t":"غرفة عائلية كبيرة","rooms.r3d":"إقامة مميزة للعائلات الكبيرة، مع شرفة واسعة وإطلالة جميلة.",
     "rooms.tag.ac":"تكييف","rooms.tag.kitchen":"مطبخ","rooms.tag.wifi":"واي فاي","rooms.tag.balcony":"شرفة","rooms.tag.washer":"غسالة ملابس","rooms.tag.view":"إطلالة",
     "gallery.eyebrow":"معرض الصور","gallery.title":"لحظات من باليكوغلو",
-    "gallery.tag1":"الواجهة الخارجية","gallery.tag2":"الصالة","gallery.tag3":"المطبخ","gallery.tag4":"الشرفة","gallery.tag5":"الإطلالة",
+    "gallery.tag1":"الواجهة الخارجية","gallery.tag2":"الصالة","gallery.tag3":"المطبخ","gallery.tag4":"غرفة النوم",
     "contact.eyebrow":"تواصل معنا","contact.title":"بانتظار استقبالكم",
     "contact.p":"يمكنكم التواصل معنا عبر واتساب أو الهاتف أو البريد الإلكتروني للحجز والاستفسار.",
-    "contact.addressLabel":"العنوان","contact.address":"طرابزون، تركيا — [سيتم إضافة العنوان الكامل]",
+    "contact.addressLabel":"العنوان","contact.address":"حي كوناكلار، شارع ساعات، رقم 13، أورتاهيسار / طرابزون",
     "contact.phoneLabel":"الهاتف","contact.emailLabel":"البريد الإلكتروني","contact.cta":"راسلنا عبر واتساب",
     "footer.copy":'© <span id="year"></span> باليكوغلو أبارت. جميع الحقوق محفوظة.'
   }
@@ -662,6 +738,44 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 });
 
 applyLang('tr');
+
+// --- YENİ EKLENEN ANİMASYON (SCROLL) KODLARI ---
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // 1. Header Scroll Gölgesi
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // 2. Intersection Observer ile Scroll Animasyonları (Reveal)
+  const revealElements = document.querySelectorAll('.reveal, .reveal-gallery');
+  
+  const revealOptions = {
+    threshold: 0.15, // Elemanın %15'i göründüğünde tetikle
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // Bir kere çalışsın ve bıraksın
+      }
+    });
+  }, revealOptions);
+
+  revealElements.forEach(el => {
+    revealOnScroll.observe(el);
+  });
+
+});
 </script>
 
 </body>
