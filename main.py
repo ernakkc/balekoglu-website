@@ -1,0 +1,1 @@
+# .DS_Store githubdan silme kodu git rm --cached .DS_Store
