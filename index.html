@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balekoğlu Apart — Trabzon</title>
+<meta name="description" content="Balekoğlu Apart, Trabzon şehir merkezinde; meydana 10 dakika, havalimanına 2 dakika mesafede konforlu apart otel. Türkçe, English, العربية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2620;
+    --forest:#24402F;
+    --forest-2:#2E4F38;
+    --sage:#93A98D;
+    --mist:#E7ECE2;
+    --cream:#F6F1E6;
+    --gold:#B4872F;
+    --rust:#9C5636;
+    --paper:#FBF8F1;
+
+    --font-display:'Fraunces', serif;
+    --font-body:'Manrope', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    --container: 1180px;
+    --radius: 18px;
+  }
+
+  body.lang-ar{
+    --font-display:'Cairo', sans-serif;
+    --font-body:'Tajawal', sans-serif;
+  }
+  body.lang-ar h1, body.lang-ar h2, body.lang-ar h3{font-weight:700;}
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--container); margin:0 auto; padding:0 28px;}
+  h1,h2,h3{font-family:var(--font-display); margin:0; color:var(--forest);}
+  .eyebrow{
+    font-family:var(--font-mono);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--rust);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  body.lang-ar .eyebrow{letter-spacing:0; font-family:var(--font-body); font-weight:700;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--rust);}
+  body[dir="rtl"] .eyebrow::before{order:2;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,248,241,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(36,64,47,.1);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.28rem;
+    color:var(--forest);
+    letter-spacing:.01em;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand .dot{color:var(--gold); font-size:1.6rem; line-height:0;}
+  .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    text-decoration:none; font-size:.92rem; font-weight:600; color:var(--forest-2);
+    position:relative; padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; height:2px; width:0;
+    background:var(--gold); transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-right{display:flex; align-items:center; gap:18px;}
+  .lang-switch{display:flex; gap:4px; background:var(--mist); border-radius:100px; padding:4px;}
+  .lang-switch button{
+    border:none; background:transparent; padding:7px 13px; border-radius:100px;
+    font-family:var(--font-mono); font-size:.72rem; font-weight:500; letter-spacing:.04em;
+    color:var(--forest-2); cursor:pointer; transition:.2s ease;
+  }
+  .lang-switch button.active{background:var(--forest); color:var(--paper);}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-toggle span{display:block; width:22px; height:2px; background:var(--forest); margin:5px 0;}
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; inset:64px 0 auto 0; background:var(--paper); flex-direction:column;
+      padding:24px 28px; gap:18px; border-bottom:1px solid rgba(36,64,47,.1);
+      transform:translateY(-120%); transition:transform .3s ease; box-shadow:0 20px 30px rgba(0,0,0,.06);
+    }
+    .nav-links.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(180deg, #EFF3E9 0%, var(--paper) 62%);
+    padding-top:64px;
+  }
+  .mist-layer{position:absolute; left:-10%; width:120%; bottom:0; opacity:.55;}
+  .mist-1{animation:drift1 34s linear infinite;}
+  .mist-2{animation:drift2 46s linear infinite; opacity:.35;}
+  @keyframes drift1{0%{transform:translateX(0);}50%{transform:translateX(-3%);}100%{transform:translateX(0);}}
+  @keyframes drift2{0%{transform:translateX(0);}50%{transform:translateX(3%);}100%{transform:translateX(0);}}
+
+  .hero-inner{
+    position:relative; z-index:2;
+    padding:88px 0 60px;
+    display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
+  }
+  .hero h1{font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; font-weight:600;}
+  .hero .accent{color:var(--gold); font-style:italic;}
+  .hero p.sub{font-size:1.05rem; color:var(--forest-2); max-width:46ch; margin:22px 0 34px;}
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:100px; font-weight:700; font-size:.92rem;
+    text-decoration:none; cursor:pointer; border:1px solid transparent; transition:.25s ease;
+  }
+  .btn-primary{background:var(--forest); color:var(--paper);}
+  .btn-primary:hover{background:var(--forest-2); transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--forest); color:var(--forest);}
+  .btn-ghost:hover{background:var(--forest); color:var(--paper);}
+
+  .stat-row{display:flex; gap:36px; margin-top:46px; flex-wrap:wrap;}
+  .stat-row div{font-family:var(--font-mono); font-size:.76rem; color:var(--forest-2); max-width:150px; line-height:1.5;}
+  .stat-row strong{display:block; font-family:var(--font-display); font-size:1.15rem; color:var(--forest); font-weight:600; margin-bottom:4px;}
+
+  .hero-art{position:relative; aspect-ratio:1/1.05;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.8rem,3.2vw,2.5rem); font-weight:600; line-height:1.15;}
+  .band-forest{background:var(--forest); color:var(--mist);}
+  .band-forest h2, .band-forest h3{color:var(--paper);}
+  .band-forest .eyebrow{color:#D9BE7A;}
+  .band-forest .eyebrow::before{background:#D9BE7A;}
+
+  /* ---------- TRUST / AWARDS ---------- */
+  .trust{padding:64px 0;}
+  .trust-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
+  .trust-card{
+    display:flex; align-items:center; gap:22px;
+    background:var(--paper); border:1px solid rgba(36,64,47,.12); border-radius:var(--radius);
+    padding:26px 28px;
+  }
+  .trust-score{
+    font-family:var(--font-display); font-weight:700; font-size:2.3rem; color:var(--forest);
+    line-height:1; white-space:nowrap;
+  }
+  .trust-score sup{font-family:var(--font-mono); font-size:.85rem; font-weight:500; color:var(--forest-2); margin-inline-start:4px;}
+  .trust-stars{display:flex; gap:3px; margin-top:6px;}
+  .trust-stars svg{width:15px; height:15px;}
+  .trust-meta h4{font-family:var(--font-display); font-size:1.02rem; font-weight:600; margin:0 0 4px; color:var(--forest);}
+  .trust-meta p{margin:0; font-size:.82rem; color:var(--forest-2);}
+
+  @media (max-width:640px){
+    .trust-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:64px; align-items:center;}
+  .about-grid p{color:var(--forest-2); font-size:1.02rem; margin:0 0 16px;}
+  .leaf-frame{
+    background:linear-gradient(160deg, var(--forest) 0%, var(--forest-2) 100%);
+    border-radius:var(--radius); padding:34px; color:var(--paper);
+  }
+
+  /* ---------- WHY CARDS ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .why-card{
+    background:var(--paper); border:1px solid rgba(36,64,47,.12); border-radius:var(--radius);
+    padding:32px 28px; transition:.25s ease;
+  }
+  .why-card:hover{transform:translateY(-4px); box-shadow:0 18px 32px rgba(36,64,47,.1); border-color:transparent;}
+  .why-card .icon{margin-bottom:18px;}
+  .why-card h3{font-size:1.18rem; font-weight:600; margin-bottom:10px;}
+  .why-card p{color:var(--forest-2); font-size:.95rem; margin:0;}
+
+  /* ---------- ROOMS ---------- */
+  .room-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .room-card{
+    border-radius:var(--radius); overflow:hidden; background:var(--paper);
+    border:1px solid rgba(36,64,47,.12);
+  }
+  .room-visual{
+    height:180px; position:relative;
+    background:linear-gradient(135deg, var(--sage) 0%, var(--forest) 100%);
+  }
+  .room-visual svg{position:absolute; bottom:0; left:0; width:100%; opacity:.7;}
+  .room-cap{
+    position:absolute; top:14px; left:14px; z-index:2;
+    background:rgba(27,38,32,.55); backdrop-filter:blur(3px);
+    color:var(--paper); font-family:var(--font-mono); font-size:.7rem; letter-spacing:.04em;
+    padding:6px 12px; border-radius:100px;
+  }
+  body[dir="rtl"] .room-cap{left:auto; right:14px;}
+  .rooms-note{
+    display:inline-flex; align-items:center; gap:10px; margin-top:6px;
+    font-size:.92rem; color:var(--forest-2); background:var(--mist);
+    padding:10px 18px; border-radius:100px;
+  }
+  .room-body{padding:26px;}
+  .room-body h3{font-size:1.15rem; font-weight:600; margin-bottom:8px;}
+  .room-body p{color:var(--forest-2); font-size:.92rem; margin:0 0 16px;}
+  .room-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .room-tags span{
+    font-family:var(--font-mono); font-size:.68rem; background:var(--mist); color:var(--forest-2);
+    padding:5px 10px; border-radius:100px; letter-spacing:.03em;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:14px;}
+  .gallery-grid div{border-radius:12px; position:relative; overflow:hidden;}
+  .gallery-grid div span{
+    position:absolute; bottom:10px; left:12px; font-family:var(--font-mono); font-size:.66rem;
+    color:rgba(255,255,255,.85); letter-spacing:.04em;
+  }
+  .g1{grid-column:span 2; grid-row:span 2; background:linear-gradient(150deg,#3A5B41,#1B2620);}
+  .g2{background:linear-gradient(150deg,#B4872F,#7C5A22);}
+  .g3{background:linear-gradient(150deg,#93A98D,#4B6350);}
+  .g4{background:linear-gradient(150deg,#9C5636,#5C2F1E);}
+  .g5{grid-column:span 2; background:linear-gradient(150deg,#2E4F38,#7C9A72);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .contact-card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:var(--radius); padding:32px;}
+  .contact-row{display:flex; gap:14px; margin-bottom:20px; align-items:flex-start;}
+  .contact-row .label{font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:#D9BE7A; min-width:110px;}
+  .map-frame{border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.16); height:340px;}
+  .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(.2) contrast(1.05);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:var(--sage); padding:44px 0; font-size:.85rem;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer .brand{color:var(--paper);}
+
+  @media (max-width:900px){
+    .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .why-grid, .room-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .g1,.g5{grid-column:span 2;}
+    .stat-row{gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="dot">✦</span> <span data-i18n="brandName">Balekoğlu Apart</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-i18n="nav.about">Hakkımızda</a></li>
+      <li><a href="#why" data-i18n="nav.why">Neden Biz</a></li>
+      <li><a href="#rooms" data-i18n="nav.rooms">Odalar</a></li>
+      <li><a href="#gallery" data-i18n="nav.gallery">Galeri</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">İletişim</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button data-lang="tr" class="active">TR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="ar">ع</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="mist-layer mist-1" viewBox="0 0 1200 220" preserveAspectRatio="none" style="height:220px;">
+    <path d="M0,120 C150,80 300,160 450,110 C600,60 750,140 900,100 C1050,70 1150,110 1200,90 L1200,220 L0,220 Z" fill="#93A98D"/>
+  </svg>
+  <svg class="mist-layer mist-2" viewBox="0 0 1200 220" preserveAspectRatio="none" style="height:180px;">
+    <path d="M0,150 C180,100 320,180 500,130 C680,80 820,160 1000,120 C1100,100 1160,130 1200,115 L1200,220 L0,220 Z" fill="#24402F"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">TRABZON · KARADENİZ</div>
+      <h1 data-i18n="hero.title">Şehrin <span class="accent">merkezinde</span>, konforun adresi</h1>
+      <p class="sub" data-i18n="hero.sub">Balekoğlu Apart, meydana 10 dakika ve havalimanına 2 dakika mesafede; yürüme mesafesindeki marketleriyle şehrin tam kalbinde konforlu ve şık bir konaklama sunar.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">WhatsApp'tan Rezervasyon</a>
+        <a href="#rooms" class="btn btn-ghost" data-i18n="hero.cta2">Odaları İncele</a>
+      </div>
+      <div class="stat-row">
+        <div><strong data-i18n="hero.stat1t">Meydana 10 Dakika</strong><span data-i18n="hero.stat1d">Şehir merkezine kolay ulaşım</span></div>
+        <div><strong data-i18n="hero.stat2t">Havalimanına 2 Dakika</strong><span data-i18n="hero.stat2d">Uçuşlarınıza rahatlıkla yetişin</span></div>
+        <div><strong data-i18n="hero.stat3t">3 Dilde Hizmet</strong><span data-i18n="hero.stat3d">Türkçe · English · العربية</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/logo.png" alt="Balekoğlu Apart Logo" style="width:100%; height:auto; border-radius: 20%;">
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / AWARDS -->
+<section class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-card">
+      <div class="trust-score">9,1<sup>/10</sup></div>
+      <div class="trust-meta">
+        <h4 data-i18n="trust.booking.title">Booking.com Traveller Review Award 2026</h4>
+        <p data-i18n="trust.booking.sub">Misafir yorumlarına dayalı ödül</p>
+      </div>
+    </div>
+    <div class="trust-card">
+      <div>
+        <div class="trust-score">4,6<sup>/5</sup></div>
+        <div class="trust-stars">
+          <svg viewBox="0 0 20 20" fill="#B4872F"><polygon points="10,1 12.6,7 19,7.6 14,12 15.5,18.5 10,15 4.5,18.5 6,12 1,7.6 7.4,7"/></svg>
+          <svg viewBox="0 0 20 20" fill="#B4872F"><polygon points="10,1 12.6,7 19,7.6 14,12 15.5,18.5 10,15 4.5,18.5 6,12 1,7.6 7.4,7"/></svg>
+          <svg viewBox="0 0 20 20" fill="#B4872F"><polygon points="10,1 12.6,7 19,7.6 14,12 15.5,18.5 10,15 4.5,18.5 6,12 1,7.6 7.4,7"/></svg>
+          <svg viewBox="0 0 20 20" fill="#B4872F"><polygon points="10,1 12.6,7 19,7.6 14,12 15.5,18.5 10,15 4.5,18.5 6,12 1,7.6 7.4,7"/></svg>
+          <svg viewBox="0 0 20 20" fill="#B4872F"><polygon points="10,1 12.6,7 19,7.6 14,12 15.5,18.5 10,15 4.5,18.5 6,12 1,7.6 7.4,7"/></svg>
+        </div>
+      </div>
+      <div class="trust-meta">
+        <h4 data-i18n="trust.google.title">Google Haritalar Değerlendirmesi</h4>
+        <p data-i18n="trust.google.sub">Misafir puanlarının ortalaması</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="leaf-frame">
+      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="160" cy="160" r="150" fill="#F6F1E6" opacity="0.08"/>
+        <path d="M60,220 C60,140 110,80 170,60 C150,120 150,170 190,220 C140,250 90,250 60,220 Z" fill="#D9BE7A"/>
+        <path d="M60,220 C90,180 130,170 170,190" stroke="#24402F" stroke-width="4" fill="none"/>
+      </svg>
+    </div>
+    <div>
+      <div class="eyebrow" data-i18n="about.eyebrow">HAKKIMIZDA</div>
+      <h2 data-i18n="about.title">Trabzon'un yeşiline açılan, sıcak bir ev</h2>
+      <p data-i18n="about.p1">Balekoğlu Apart, Trabzon'un tam merkezinde; meydana 10 dakika, havalimanına ise 2 dakika mesafede yer alan aile işletmesi bir apart oteldir. Şehrin kalbinde kalmak, alışverişe ve ulaşıma kolayca erişmek isteyen misafirlerimizi ağırlamaktan mutluluk duyuyoruz.</p>
+      <p data-i18n="about.p2">Geniş odalarımız, tam donanımlı mutfaklarımız ve misafirperver ekibimizle; ister kısa bir tatil ister uzun bir konaklama planlayın, kendinizi evinizde hissedeceğiniz bir deneyim sunuyoruz.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="background:var(--mist);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="why.eyebrow">NEDEN BALEKOĞLU</div>
+      <h2 data-i18n="why.title">Karadeniz'i en iyi şekilde yaşayın</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M4 30 L14 16 L20 24 L28 12 L36 30" stroke="#B4872F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <h3 data-i18n="why.c1t">Meydana 10 Dakika</h3>
+        <p data-i18n="why.c1d">Şehir merkezine ve meydana yürüyerek ya da kısa bir araç yolculuğuyla kolayca ulaşın.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M4 26 C10 20 16 20 20 26 C24 20 30 20 36 26" stroke="#B4872F" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="12" r="5" stroke="#B4872F" stroke-width="2.5"/></svg>
+        </div>
+        <h3 data-i18n="why.c2t">Havalimanına 2 Dakika</h3>
+        <p data-i18n="why.c2d">Trabzon Havalimanı'na sadece birkaç dakika mesafede, uçuşlarınıza rahatlıkla yetişin.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 4 L34 12 V26 L20 36 L6 26 V12 Z" stroke="#B4872F" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="why.c3t">Yürüme Mesafesinde Marketler</h3>
+        <p data-i18n="why.c3d">Günlük ihtiyaçlarınız için marketler ve dükkanlar apartımıza yürüme mesafesinde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="rooms.eyebrow">KONAKLAMA SEÇENEKLERİ</div>
+      <h2 data-i18n="rooms.title">Size uygun oda, sizin konforunuz</h2>
+      <div class="rooms-note" data-i18n="rooms.note">❄ Tüm odalarımızda klima standart olarak sunulur</div>
+    </div>
+    <div class="room-grid">
+      <div class="room-card">
+        <div class="room-visual">
+          <span class="room-cap" data-i18n="rooms.r1cap">1-2 Kişilik</span>
+          <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,60 C80,30 160,80 240,50 C300,30 350,60 400,45 L400,100 L0,100 Z" fill="#1B2620"/></svg>
+        </div>
+        <div class="room-body">
+          <h3 data-i18n="rooms.r1t">Standart Oda</h3>
+          <p data-i18n="rooms.r1d">Tek veya çift kişilik konaklama için ideal, kompakt ve konforlu bir seçenek.</p>
+          <div class="room-tags">
+            <span data-i18n="rooms.tag.ac">Klima</span>
+            <span data-i18n="rooms.tag.kitchen">Mutfak</span>
+            <span data-i18n="rooms.tag.wifi">Wi-Fi</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-visual">
+          <span class="room-cap" data-i18n="rooms.r2cap">3-4 Kişilik</span>
+          <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,55 C90,80 170,35 250,55 C320,70 360,40 400,50 L400,100 L0,100 Z" fill="#1B2620"/></svg>
+        </div>
+        <div class="room-body">
+          <h3 data-i18n="rooms.r2t">Aile Odası</h3>
+          <p data-i18n="rooms.r2d">Geniş oturma alanı ve balkonuyla aileler için ferah ve şık bir konaklama.</p>
+          <div class="room-tags">
+            <span data-i18n="rooms.tag.ac">Klima</span>
+            <span data-i18n="rooms.tag.balcony">Balkon</span>
+            <span data-i18n="rooms.tag.wifi">Wi-Fi</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-visual">
+          <span class="room-cap" data-i18n="rooms.r3cap">5 Kişilik</span>
+          <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,70 C70,40 150,70 220,45 C300,15 360,55 400,40 L400,100 L0,100 Z" fill="#1B2620"/></svg>
+        </div>
+        <div class="room-body">
+          <h3 data-i18n="rooms.r3t">Geniş Aile Odası</h3>
+          <p data-i18n="rooms.r3d">Kalabalık aileler için geniş balkonlu, manzaralı özel bir konaklama deneyimi.</p>
+          <div class="room-tags">
+            <span data-i18n="rooms.tag.ac">Klima</span>
+            <span data-i18n="rooms.tag.balcony">Balkon</span>
+            <span data-i18n="rooms.tag.view">Manzara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background:var(--mist);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" data-i18n="gallery.eyebrow">GALERİ</div>
+      <h2 data-i18n="gallery.title">Balekoğlu'ndan kareler</h2>
+    </div>
+    <!-- NOT: Aşağıdaki gradyan kutular geçici görsel yer tutuculardır.
+         Gerçek fotoğraflarınızı eklemek için her div içine
+         <img src="fotograf.jpg" alt="..."> etiketi ekleyip arka plan rengini kaldırabilirsiniz. -->
+    <div class="gallery-grid">
+      <div class="g1"><span data-i18n="gallery.tag1">Dış Cephe</span></div>
+      <div class="g2"><span data-i18n="gallery.tag2">Salon</span></div>
+      <div class="g3"><span data-i18n="gallery.tag3">Mutfak</span></div>
+      <div class="g4"><span data-i18n="gallery.tag4">Balkon</span></div>
+      <div class="g5"><span data-i18n="gallery.tag5">Manzara</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="band-forest">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow" data-i18n="contact.eyebrow">İLETİŞİM</div>
+      <h2 data-i18n="contact.title">Sizi ağırlamak için sabırsızlanıyoruz</h2>
+      <p style="color:#C7D6C2; max-width:44ch; margin:18px 0 30px;" data-i18n="contact.p">Rezervasyon ve bilgi almak için bize WhatsApp, telefon veya e-posta ile ulaşabilirsiniz.</p>
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="label" data-i18n="contact.addressLabel">ADRES</span>
+          <span data-i18n="contact.address">Trabzon, Türkiye — [Tam adres buraya eklenecek]</span>
+        </div>
+        <div class="contact-row">
+          <span class="label" data-i18n="contact.phoneLabel">TELEFON</span>
+          <span>+90 5XX XXX XX XX</span>
+        </div>
+        <div class="contact-row">
+          <span class="label" data-i18n="contact.emailLabel">E-POSTA</span>
+          <span>info@balekogluapart.com</span>
+        </div>
+        <a href="https://wa.me/905XXXXXXXXX" class="btn btn-primary" style="margin-top:10px; background:var(--gold);" data-i18n="contact.cta">WhatsApp'tan Yazın</a>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://www.google.com/maps?q=Trabzon&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="brand"><span class="dot" style="color:var(--gold);">✦</span> Balekoğlu Apart</div>
+    <div data-i18n="footer.copy">© <span id="year"></span> Balekoğlu Apart. Tüm hakları saklıdır.</div>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  tr: {
+    brandName: "Balekoğlu Apart",
+    "nav.about":"Hakkımızda", "nav.why":"Neden Biz", "nav.rooms":"Odalar", "nav.gallery":"Galeri", "nav.contact":"İletişim",
+    "hero.title":'Şehrin <span class="accent">merkezinde</span>, konforun adresi',
+    "hero.sub":"Balekoğlu Apart, meydana 10 dakika ve havalimanına 2 dakika mesafede; yürüme mesafesindeki marketleriyle şehrin tam kalbinde konforlu ve şık bir konaklama sunar.",
+    "hero.cta1":"WhatsApp'tan Rezervasyon", "hero.cta2":"Odaları İncele",
+    "hero.stat1t":"Meydana 10 Dakika", "hero.stat1d":"Şehir merkezine kolay ulaşım",
+    "hero.stat2t":"Havalimanına 2 Dakika", "hero.stat2d":"Uçuşlarınıza rahatlıkla yetişin",
+    "hero.stat3t":"3 Dilde Hizmet", "hero.stat3d":"Türkçe · English · العربية",
+    "trust.booking.title":"Booking.com Traveller Review Award 2026","trust.booking.sub":"Misafir yorumlarına dayalı ödül",
+    "trust.google.title":"Google Haritalar Değerlendirmesi","trust.google.sub":"Misafir puanlarının ortalaması",
+    "about.eyebrow":"HAKKIMIZDA", "about.title":"Trabzon'un merkezinde, sıcak bir ev",
+    "about.p1":"Balekoğlu Apart, Trabzon'un tam merkezinde; meydana 10 dakika, havalimanına ise 2 dakika mesafede yer alan aile işletmesi bir apart oteldir. Şehrin kalbinde kalmak, alışverişe ve ulaşıma kolayca erişmek isteyen misafirlerimizi ağırlamaktan mutluluk duyuyoruz.",
+    "about.p2":"Geniş odalarımız, tam donanımlı mutfaklarımız ve misafirperver ekibimizle; ister kısa bir tatil ister uzun bir konaklama planlayın, kendinizi evinizde hissedeceğiniz bir deneyim sunuyoruz.",
+    "why.eyebrow":"NEDEN BALEKOĞLU", "why.title":"Şehrin tam kalbinde, kolaylıkla yaşayın",
+    "why.c1t":"Meydana 10 Dakika","why.c1d":"Şehir merkezine ve meydana yürüyerek ya da kısa bir araç yolculuğuyla kolayca ulaşın.",
+    "why.c2t":"Havalimanına 2 Dakika","why.c2d":"Trabzon Havalimanı'na sadece birkaç dakika mesafede, uçuşlarınıza rahatlıkla yetişin.",
+    "why.c3t":"Yürüme Mesafesinde Marketler","why.c3d":"Günlük ihtiyaçlarınız için marketler ve dükkanlar apartımıza yürüme mesafesinde.",
+    "rooms.eyebrow":"KONAKLAMA SEÇENEKLERİ","rooms.title":"Size uygun oda, sizin konforunuz",
+    "rooms.note":"❄ Tüm odalarımızda klima standart olarak sunulur",
+    "rooms.r1cap":"1-2 Kişilik","rooms.r2cap":"3-4 Kişilik","rooms.r3cap":"5 Kişilik",
+    "rooms.r1t":"Standart Oda","rooms.r1d":"Tek veya çift kişilik konaklama için ideal, kompakt ve konforlu bir seçenek.",
+    "rooms.r2t":"Aile Odası","rooms.r2d":"Geniş oturma alanı ve balkonuyla aileler için ferah ve şık bir konaklama.",
+    "rooms.r3t":"Geniş Aile Odası","rooms.r3d":"Kalabalık aileler için geniş balkonlu, manzaralı özel bir konaklama deneyimi.",
+    "rooms.tag.ac":"Klima","rooms.tag.kitchen":"Mutfak","rooms.tag.wifi":"Wi-Fi","rooms.tag.balcony":"Balkon","rooms.tag.washer":"Çamaşır Makinesi","rooms.tag.view":"Manzara",
+    "gallery.eyebrow":"GALERİ","gallery.title":"Balekoğlu'ndan kareler",
+    "gallery.tag1":"Dış Cephe","gallery.tag2":"Salon","gallery.tag3":"Mutfak","gallery.tag4":"Balkon","gallery.tag5":"Manzara",
+    "contact.eyebrow":"İLETİŞİM","contact.title":"Sizi ağırlamak için sabırsızlanıyoruz",
+    "contact.p":"Rezervasyon ve bilgi almak için bize WhatsApp, telefon veya e-posta ile ulaşabilirsiniz.",
+    "contact.addressLabel":"ADRES","contact.address":"Trabzon, Türkiye — [Tam adres buraya eklenecek]",
+    "contact.phoneLabel":"TELEFON","contact.emailLabel":"E-POSTA","contact.cta":"WhatsApp'tan Yazın",
+    "footer.copy":'© <span id="year"></span> Balekoğlu Apart. Tüm hakları saklıdır.'
+  },
+  en: {
+    brandName: "Balekoğlu Apart",
+    "nav.about":"About", "nav.why":"Why Us", "nav.rooms":"Rooms", "nav.gallery":"Gallery", "nav.contact":"Contact",
+    "hero.title":'In the <span class="accent">heart</span> of the city, true comfort',
+    "hero.sub":"Balekoğlu Apart is just 10 minutes from the main square and 2 minutes from the airport, with markets within walking distance — a comfortable, stylish stay right in the city center.",
+    "hero.cta1":"Book via WhatsApp", "hero.cta2":"See Rooms",
+    "hero.stat1t":"10 Minutes to the Square", "hero.stat1d":"Easy access to the city center",
+    "hero.stat2t":"2 Minutes to the Airport", "hero.stat2d":"Catch your flight with ease",
+    "hero.stat3t":"Service in 3 Languages", "hero.stat3d":"Turkish · English · العربية",
+    "trust.booking.title":"Booking.com Traveller Review Award 2026","trust.booking.sub":"Award based on guest reviews",
+    "trust.google.title":"Google Maps Rating","trust.google.sub":"Average of guest ratings",
+    "about.eyebrow":"ABOUT US", "about.title":"A warm home in the center of Trabzon",
+    "about.p1":"Balekoğlu Apart is a family-run apart-hotel located right in the center of Trabzon — just 10 minutes from the main square and 2 minutes from the airport. We love hosting guests who want to stay in the heart of the city, with easy access to shops and transport.",
+    "about.p2":"With our spacious apartments, fully equipped kitchens and welcoming team, whether you're planning a short break or a long stay, we offer an experience where you'll feel right at home.",
+    "why.eyebrow":"WHY BALEKOĞLU", "why.title":"Live right in the heart of the city",
+    "why.c1t":"10 Minutes to the Square","why.c1d":"Reach the city center and main square easily, on foot or with a short drive.",
+    "why.c2t":"2 Minutes to the Airport","why.c2d":"Just minutes from Trabzon Airport — catch your flight with ease.",
+    "why.c3t":"Markets Within Walking Distance","why.c3d":"Everyday shops and markets are just steps away from the apartment.",
+    "rooms.eyebrow":"STAY OPTIONS","rooms.title":"The right room, your comfort",
+    "rooms.note":"❄ Air conditioning is standard in every room",
+    "rooms.r1cap":"1-2 Guests","rooms.r2cap":"3-4 Guests","rooms.r3cap":"5 Guests",
+    "rooms.r1t":"Standard Room","rooms.r1d":"A compact, comfortable option ideal for solo travelers or couples.",
+    "rooms.r2t":"Family Room","rooms.r2d":"A spacious living area and balcony make this a bright, stylish stay for families.",
+    "rooms.r3t":"Large Family Room","rooms.r3d":"A special stay for bigger families, with a wide balcony and a view.",
+    "rooms.tag.ac":"Air Conditioning","rooms.tag.kitchen":"Kitchen","rooms.tag.wifi":"Wi-Fi","rooms.tag.balcony":"Balcony","rooms.tag.washer":"Washing Machine","rooms.tag.view":"View",
+    "gallery.eyebrow":"GALLERY","gallery.title":"Moments from Balekoğlu",
+    "gallery.tag1":"Exterior","gallery.tag2":"Living Room","gallery.tag3":"Kitchen","gallery.tag4":"Balcony","gallery.tag5":"View",
+    "contact.eyebrow":"CONTACT","contact.title":"We can't wait to host you",
+    "contact.p":"Reach us via WhatsApp, phone or email for reservations and information.",
+    "contact.addressLabel":"ADDRESS","contact.address":"Trabzon, Türkiye — [Full address to be added]",
+    "contact.phoneLabel":"PHONE","contact.emailLabel":"EMAIL","contact.cta":"Message on WhatsApp",
+    "footer.copy":'© <span id="year"></span> Balekoğlu Apart. All rights reserved.'
+  },
+  ar: {
+    brandName: "باليكوغلو أبارت",
+    "nav.about":"من نحن", "nav.why":"لماذا نحن", "nav.rooms":"الغرف", "nav.gallery":"معرض الصور", "nav.contact":"تواصل معنا",
+    "hero.title":'في <span class="accent">قلب</span> المدينة، عنوان الراحة',
+    "hero.sub":"باليكوغلو أبارت على بعد 10 دقائق من الميدان الرئيسي ودقيقتين فقط من المطار، مع أسواق على مسافة قريبة سيرًا على الأقدام — إقامة مريحة وأنيقة في قلب المدينة تمامًا.",
+    "hero.cta1":"احجز عبر واتساب", "hero.cta2":"استعرض الغرف",
+    "hero.stat1t":"10 دقائق إلى الميدان", "hero.stat1d":"وصول سهل إلى وسط المدينة",
+    "hero.stat2t":"دقيقتان إلى المطار", "hero.stat2d":"اللحاق برحلتكم بسهولة",
+    "hero.stat3t":"خدمة بثلاث لغات", "hero.stat3d":"التركية · الإنجليزية · العربية",
+    "trust.booking.title":"جائزة Booking.com لتقييمات المسافرين 2026","trust.booking.sub":"جائزة مبنية على تقييمات الضيوف",
+    "trust.google.title":"تقييم خرائط غوغل","trust.google.sub":"متوسط تقييمات الضيوف",
+    "about.eyebrow":"من نحن", "about.title":"منزل دافئ في قلب طرابزون",
+    "about.p1":"باليكوغلو أبارت هو فندق شقق عائلي يقع في قلب طرابزون تمامًا، على بعد 10 دقائق من الميدان الرئيسي ودقيقتين فقط من المطار. يسعدنا استقبال ضيوفنا الراغبين بالإقامة في قلب المدينة، مع سهولة الوصول إلى المتاجر ووسائل النقل.",
+    "about.p2":"مع شققنا الواسعة ومطابخنا المجهزة بالكامل وفريقنا المضياف، سواء كنتم تخططون لإجازة قصيرة أو إقامة طويلة، نقدم لكم تجربة تشعركم وكأنكم في منزلكم.",
+    "why.eyebrow":"لماذا باليكوغلو", "why.title":"عيشوا في قلب المدينة بكل سهولة",
+    "why.c1t":"10 دقائق إلى الميدان","why.c1d":"الوصول إلى وسط المدينة والميدان الرئيسي بسهولة، سيرًا على الأقدام أو بسيارة قصيرة.",
+    "why.c2t":"دقيقتان إلى المطار","why.c2d":"على بعد دقائق فقط من مطار طرابزون — اللحاق برحلتكم بسهولة.",
+    "why.c3t":"أسواق على مسافة قريبة سيرًا","why.c3d":"المتاجر ومستلزمات الحياة اليومية على بعد خطوات من الشقة.",
+    "rooms.eyebrow":"خيارات الإقامة","rooms.title":"الغرفة المناسبة لراحتكم",
+    "rooms.note":"❄ التكييف متوفر بشكل أساسي في جميع الغرف",
+    "rooms.r1cap":"1-2 أشخاص","rooms.r2cap":"3-4 أشخاص","rooms.r3cap":"5 أشخاص",
+    "rooms.r1t":"غرفة عادية","rooms.r1d":"خيار مريح ومناسب للمسافرين بمفردهم أو للأزواج.",
+    "rooms.r2t":"غرفة عائلية","rooms.r2d":"صالة واسعة وشرفة تمنح إقامة مريحة وأنيقة للعائلات.",
+    "rooms.r3t":"غرفة عائلية كبيرة","rooms.r3d":"إقامة مميزة للعائلات الكبيرة، مع شرفة واسعة وإطلالة جميلة.",
+    "rooms.tag.ac":"تكييف","rooms.tag.kitchen":"مطبخ","rooms.tag.wifi":"واي فاي","rooms.tag.balcony":"شرفة","rooms.tag.washer":"غسالة ملابس","rooms.tag.view":"إطلالة",
+    "gallery.eyebrow":"معرض الصور","gallery.title":"لحظات من باليكوغلو",
+    "gallery.tag1":"الواجهة الخارجية","gallery.tag2":"الصالة","gallery.tag3":"المطبخ","gallery.tag4":"الشرفة","gallery.tag5":"الإطلالة",
+    "contact.eyebrow":"تواصل معنا","contact.title":"بانتظار استقبالكم",
+    "contact.p":"يمكنكم التواصل معنا عبر واتساب أو الهاتف أو البريد الإلكتروني للحجز والاستفسار.",
+    "contact.addressLabel":"العنوان","contact.address":"طرابزون، تركيا — [سيتم إضافة العنوان الكامل]",
+    "contact.phoneLabel":"الهاتف","contact.emailLabel":"البريد الإلكتروني","contact.cta":"راسلنا عبر واتساب",
+    "footer.copy":'© <span id="year"></span> باليكوغلو أبارت. جميع الحقوق محفوظة.'
+  }
+};
+
+function applyLang(lang){
+  const dict = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.body.classList.toggle('lang-ar', lang === 'ar');
+  document.querySelectorAll('.lang-switch button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+  localStorage.setItem('balekoglu-lang', lang);
+}
+
+document.querySelectorAll('.lang-switch button').forEach(btn=>{
+  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+});
+
+document.getElementById('navToggle').addEventListener('click', ()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click', ()=> document.getElementById('navLinks').classList.remove('open'));
+});
+
+applyLang('tr');
+</script>
+
+</body>
+</html>
