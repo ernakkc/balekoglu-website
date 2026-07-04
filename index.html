@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Balekoğlu Apart — Trabzon</title>
-<meta name="description" content="Balekoğlu Apart, Trabzon şehir merkezinde; meydana 10 dakika, havalimanına 2 dakika mesafede konforlu apart otel. Türkçe, English, العربية.">
+<!-- SEO: Çok Dilli Başlık ve Arapça Odaklı Anahtar Kelimeler -->
+<title>Balekoğlu Apart Trabzon | شقق فندقية طرابزون</title>
+<meta name="description" content="Trabzon merkezde, havalimanına 2 dk, meydana 10 dk mesafede konforlu aile apartı. Comfortable apart hotel in Trabzon. شقق فندقية عائلية في طرابزون، قريبة من الميدان والمطار. إقامة مريحة للعائلات.">
+<meta name="keywords" content="Trabzon apart, Trabzon günlük kiralık, Trabzon family hotel, hotel apartments Trabzon, Trabzon accommodation, شقق فندقية طرابزون, شقق للإيجار في طرابزون, سكن عائلي طرابزون, فنادق طرابزون, طرابزون الميدان">
+<meta name="author" content="Balekoğlu Apart">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -78,7 +82,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-  /* Stagger delays for grid items */
   .trust-card:nth-child(1), .why-card:nth-child(1), .room-card:nth-child(1) { transition-delay: 0.1s; }
   .trust-card:nth-child(2), .why-card:nth-child(2), .room-card:nth-child(2) { transition-delay: 0.2s; }
   .why-card:nth-child(3), .room-card:nth-child(3) { transition-delay: 0.3s; }
@@ -338,10 +341,28 @@
   .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(.1) contrast(1.05); transition: filter 0.3s ease;}
   .map-frame:hover iframe { filter:grayscale(0) contrast(1); }
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--ink); color:var(--sage); padding:44px 0; font-size:.85rem;}
+  /* ---------- FOOTER & HIDDEN COUNTER ---------- */
+  footer{
+    background:var(--ink); color:var(--sage); padding:44px 0; font-size:.85rem;
+    position: relative; overflow: hidden; /* Gizli sayaç için gerekli */
+  }
   .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
   footer .brand{color:var(--paper);}
+  
+  /* Sadece Senin Göreceğin Silik Sayaç */
+  .secret-counter {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--sage);
+    opacity: 0.15; /* Neredeyse görünmez */
+    user-select: none;
+    cursor: default;
+  }
+  /* Arapça düzeninde sayaç sola geçsin ki UI bozulmasın */
+  body[dir="rtl"] .secret-counter { right: auto; left: 12px; }
 
   @media (max-width:900px){
     .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
@@ -604,10 +625,12 @@
     <div class="brand"><span class="dot" style="color:var(--gold);">✦</span> Balekoğlu Apart</div>
     <div data-i18n="footer.copy">© <span id="year"></span> Balekoğlu Apart. Tüm hakları saklıdır.</div>
   </div>
+  <!-- GİZLİ SAYAÇ BURADA -->
+  <span class="secret-counter" id="visitorCounter">0</span>
 </footer>
 
 <script>
-// --- İÇERİK VERİLERİ (İngilizce ve Arapça Güncellendi) ---
+// --- İÇERİK VERİLERİ ---
 const i18n = {
   tr: {
     brandName: "Balekoğlu Apart",
@@ -709,6 +732,13 @@ const i18n = {
     "footer.copy":'© <span id="year"></span> باليكوغلو أبارت. جميع الحقوق محفوظة.'
   }
 };
+function upCounter(){
+  const counterEl = document.getElementById('visitorCounter');
+  let count = parseInt(localStorage.getItem('balekoglu-visitor-count') || '0', 10);
+  count += 1;
+  localStorage.setItem('balekoglu-visitor-count', count);
+  counterEl.textContent = count;
+}
 
 function applyLang(lang){
   const dict = i18n[lang];
@@ -739,10 +769,9 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 
 applyLang('tr');
 
-// --- YENİ EKLENEN ANİMASYON (SCROLL) KODLARI ---
+// --- ANİMASYON KODLARI ---
 document.addEventListener("DOMContentLoaded", function() {
   
-  // 1. Header Scroll Gölgesi
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
@@ -752,11 +781,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // 2. Intersection Observer ile Scroll Animasyonları (Reveal)
   const revealElements = document.querySelectorAll('.reveal, .reveal-gallery');
   
   const revealOptions = {
-    threshold: 0.15, // Elemanın %15'i göründüğünde tetikle
+    threshold: 0.15,
     rootMargin: "0px 0px -50px 0px"
   };
 
@@ -766,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
       } else {
         entry.target.classList.add('active');
-        observer.unobserve(entry.target); // Bir kere çalışsın ve bıraksın
+        observer.unobserve(entry.target);
       }
     });
   }, revealOptions);
@@ -776,6 +804,11 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  upCounter();
+});
+
 </script>
 
 </body>
