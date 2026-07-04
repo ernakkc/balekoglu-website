@@ -360,11 +360,7 @@
 <section id="about">
   <div class="wrap about-grid">
     <div class="leaf-frame">
-      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="160" cy="160" r="150" fill="#F6F1E6" opacity="0.08"/>
-        <path d="M60,220 C60,140 110,80 170,60 C150,120 150,170 190,220 C140,250 90,250 60,220 Z" fill="#D9BE7A"/>
-        <path d="M60,220 C90,180 130,170 170,190" stroke="#24402F" stroke-width="4" fill="none"/>
-      </svg>
+      <img src="assets/hakkimizda.png" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:auto; border-radius:12px;">
     </div>
     <div>
       <div class="eyebrow" data-i18n="about.eyebrow">HAKKIMIZDA</div>
@@ -420,7 +416,9 @@
       <div class="room-card">
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r1cap">1-2 Kişilik</span>
-          <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,60 C80,30 160,80 240,50 C300,30 350,60 400,45 L400,100 L0,100 Z" fill="#1B2620"/></svg>
+          <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+            <source src="assets/room10.mp4" type="video/mp4">
+          </video> 
         </div>
         <div class="room-body">
           <h3 data-i18n="rooms.r1t">Standart Oda</h3>
@@ -434,8 +432,10 @@
       </div>
       <div class="room-card">
         <div class="room-visual">
-          <span class="room-cap" data-i18n="rooms.r2cap">3-4 Kişilik</span>
-          <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,55 C90,80 170,35 250,55 C320,70 360,40 400,50 L400,100 L0,100 Z" fill="#1B2620"/></svg>
+          <span class="room-cap" data-i18n="rooms.r2cap">2-3 Kişilik</span>
+          <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+            <source src="assets/room11.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="room-body">
           <h3 data-i18n="rooms.r2t">Aile Odası</h3>
@@ -449,8 +449,10 @@
       </div>
       <div class="room-card">
         <div class="room-visual">
-          <span class="room-cap" data-i18n="rooms.r3cap">5 Kişilik</span>
-          <svg viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0,70 C70,40 150,70 220,45 C300,15 360,55 400,40 L400,100 L0,100 Z" fill="#1B2620"/></svg>
+          <span class="room-cap" data-i18n="rooms.r3cap">5-6 Kişilik</span>
+          <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+            <source src="assets/room21.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="room-body">
           <h3 data-i18n="rooms.r3t">Geniş Aile Odası</h3>
@@ -473,15 +475,22 @@
       <div class="eyebrow" data-i18n="gallery.eyebrow">GALERİ</div>
       <h2 data-i18n="gallery.title">Balekoğlu'ndan kareler</h2>
     </div>
-    <!-- NOT: Aşağıdaki gradyan kutular geçici görsel yer tutuculardır.
-         Gerçek fotoğraflarınızı eklemek için her div içine
-         <img src="fotograf.jpg" alt="..."> etiketi ekleyip arka plan rengini kaldırabilirsiniz. -->
     <div class="gallery-grid">
-      <div class="g1"><span data-i18n="gallery.tag1">Dış Cephe</span></div>
-      <div class="g2"><span data-i18n="gallery.tag2">Salon</span></div>
-      <div class="g3"><span data-i18n="gallery.tag3">Mutfak</span></div>
-      <div class="g4"><span data-i18n="gallery.tag4">Balkon</span></div>
-      <div class="g5"><span data-i18n="gallery.tag5">Manzara</span></div>
+      <div class="g1"><span data-i18n="gallery.tag1">Dış Cephe</span>
+        <img src="assets/discephe.jpg" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="g2"><span data-i18n="gallery.tag2">Salon</span>
+        <img src="assets/salon.jpg" alt="Balekoğlu Apart Salon" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="g3"><span data-i18n="gallery.tag3">Mutfak</span>
+        <img src="assets/mutfak.jpg" alt="Balekoğlu Apart Mutfak" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="g4"><span data-i18n="gallery.tag4">Balkon</span>
+        <img src="assets/balkon.jpg" alt="Balekoğlu Apart Balkon" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="g5"><span data-i18n="gallery.tag5">Manzara</span>
+        <img src="assets/manzara.jpg" alt="Balekoğlu Apart Manzara" style="width:100%; height:100%; object-fit:cover;">
+      </div>
     </div>
   </div>
 </section>
@@ -544,7 +553,7 @@ const i18n = {
     "why.c3t":"Yürüme Mesafesinde Marketler","why.c3d":"Günlük ihtiyaçlarınız için marketler ve dükkanlar apartımıza yürüme mesafesinde.",
     "rooms.eyebrow":"KONAKLAMA SEÇENEKLERİ","rooms.title":"Size uygun oda, sizin konforunuz",
     "rooms.note":"❄ Tüm odalarımızda klima standart olarak sunulur",
-    "rooms.r1cap":"1-2 Kişilik","rooms.r2cap":"3-4 Kişilik","rooms.r3cap":"5 Kişilik",
+    "rooms.r1cap":"1-2 Kişilik","rooms.r2cap":"2-3 Kişilik","rooms.r3cap":"5-6 Kişilik",
     "rooms.r1t":"Standart Oda","rooms.r1d":"Tek veya çift kişilik konaklama için ideal, kompakt ve konforlu bir seçenek.",
     "rooms.r2t":"Aile Odası","rooms.r2d":"Geniş oturma alanı ve balkonuyla aileler için ferah ve şık bir konaklama.",
     "rooms.r3t":"Geniş Aile Odası","rooms.r3d":"Kalabalık aileler için geniş balkonlu, manzaralı özel bir konaklama deneyimi.",
@@ -577,7 +586,7 @@ const i18n = {
     "why.c3t":"Markets Within Walking Distance","why.c3d":"Everyday shops and markets are just steps away from the apartment.",
     "rooms.eyebrow":"STAY OPTIONS","rooms.title":"The right room, your comfort",
     "rooms.note":"❄ Air conditioning is standard in every room",
-    "rooms.r1cap":"1-2 Guests","rooms.r2cap":"3-4 Guests","rooms.r3cap":"5 Guests",
+    "rooms.r1cap":"1-2 Guests","rooms.r2cap":"2-3 Guests","rooms.r3cap":"5-6 Guests",
     "rooms.r1t":"Standard Room","rooms.r1d":"A compact, comfortable option ideal for solo travelers or couples.",
     "rooms.r2t":"Family Room","rooms.r2d":"A spacious living area and balcony make this a bright, stylish stay for families.",
     "rooms.r3t":"Large Family Room","rooms.r3d":"A special stay for bigger families, with a wide balcony and a view.",
@@ -610,7 +619,7 @@ const i18n = {
     "why.c3t":"أسواق على مسافة قريبة سيرًا","why.c3d":"المتاجر ومستلزمات الحياة اليومية على بعد خطوات من الشقة.",
     "rooms.eyebrow":"خيارات الإقامة","rooms.title":"الغرفة المناسبة لراحتكم",
     "rooms.note":"❄ التكييف متوفر بشكل أساسي في جميع الغرف",
-    "rooms.r1cap":"1-2 أشخاص","rooms.r2cap":"3-4 أشخاص","rooms.r3cap":"5 أشخاص",
+    "rooms.r1cap":"1-2 أشخاص","rooms.r2cap":"2-3 أشخاص","rooms.r3cap":"5-6 أشخاص",
     "rooms.r1t":"غرفة عادية","rooms.r1d":"خيار مريح ومناسب للمسافرين بمفردهم أو للأزواج.",
     "rooms.r2t":"غرفة عائلية","rooms.r2d":"صالة واسعة وشرفة تمنح إقامة مريحة وأنيقة للعائلات.",
     "rooms.r3t":"غرفة عائلية كبيرة","rooms.r3d":"إقامة مميزة للعائلات الكبيرة، مع شرفة واسعة وإطلالة جميلة.",
