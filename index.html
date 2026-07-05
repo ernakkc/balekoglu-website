@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- SEO: Çok Dilli Başlık ve Arapça Odaklı Anahtar Kelimeler -->
 <title>Balekoğlu Apart Trabzon | شقق فندقية طرابزون</title>
 <meta name="description" content="Trabzon merkezde, havalimanına 2 dk, meydana 10 dk mesafede konforlu aile apartı. Comfortable apart hotel in Trabzon. شقق فندقية عائلية في طرابزون، قريبة من الميدان والمطار. إقامة مريحة للعائلات.">
 <meta name="keywords" content="Trabzon apart, Trabzon günlük kiralık, Trabzon family hotel, hotel apartments Trabzon, Trabzon accommodation, شقق فندقية طرابزون, شقق للإيجار في طرابزون, سكن عائلي طرابزون, فنادق طرابزون, طرابزون الميدان">
 <meta name="author" content="Balekoğlu Apart">
 
+<link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +28,8 @@
     --font-body:'Manrope', sans-serif;
     --font-mono:'JetBrains Mono', monospace;
 
-    --container: 1180px;
+    /* PC Genişliği Artırıldı (1180px -> 1320px) */
+    --container: 1320px;
     --radius: 18px;
   }
 
@@ -51,7 +52,14 @@
   }
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
-  .wrap{max-width:var(--container); margin:0 auto; padding:0 28px;}
+  
+  /* Mobilde Kenarlara Yapışmayı Engellemek İçin width % kullanıldı */
+  .wrap{
+    width: 90%; 
+    max-width: var(--container); 
+    margin: 0 auto;
+  }
+  
   h1,h2,h3{font-family:var(--font-display); margin:0; color:var(--forest);}
   .eyebrow{
     font-family:var(--font-mono);
@@ -361,9 +369,9 @@
     user-select: none;
     cursor: default;
   }
-  /* Arapça düzeninde sayaç sola geçsin ki UI bozulmasın */
   body[dir="rtl"] .secret-counter { right: auto; left: 12px; }
 
+  /* ---------- MOBİL RESPONSIVE DÜZELTMELERİ ---------- */
   @media (max-width:900px){
     .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
     .why-grid, .room-grid{grid-template-columns:1fr;}
@@ -371,13 +379,35 @@
     .g1{grid-column:span 2;}
     .stat-row{gap:24px;}
   }
+
+  @media (max-width:600px){
+    /* Mobilde yazıların yan yana gelip kenarlardan taşmasını engeller */
+    .contact-row {
+      flex-direction: column;
+      gap: 4px;
+    }
+    /* Mobilde kart iç boşlukları esnetilerek metinlere alan açılır */
+    .contact-card, .why-card, .room-body {
+      padding: 24px 20px;
+    }
+    /* Mobilde aşırı büyük kalan dikey boşluklar daraltıldı */
+    section {
+      padding: 64px 0;
+    }
+    .hero {
+      padding-top: 32px;
+    }
+  }
 </style>
 </head>
 <body>
 
 <header id="mainHeader">
   <nav class="wrap">
-    <div class="brand"><span class="dot">✦</span> <span data-i18n="brandName">Balekoğlu Apart</span></div>
+    <div class="brand">
+      <img src="assets/logo.jpeg" alt="Logo" style="height: 40px; width: auto; border-radius: 8px; margin-right: 8px;">
+      <span data-i18n="brandName">Balekoğlu Apart</span>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-i18n="nav.about">Hakkımızda</a></li>
       <li><a href="#why" data-i18n="nav.why">Neden Biz</a></li>
@@ -398,7 +428,6 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <svg class="mist-layer mist-1" viewBox="0 0 1200 220" preserveAspectRatio="none" style="height:220px;">
     <path d="M0,120 C150,80 300,160 450,110 C600,60 750,140 900,100 C1050,70 1150,110 1200,90 L1200,220 L0,220 Z" fill="#93A98D"/>
@@ -422,12 +451,11 @@
       </div>
     </div>
     <div class="hero-art">
-      <img src="assets/logo.png" alt="Balekoğlu Apart Logo" style="width:100%; height:auto; border-radius: 20%;">
+      <img src="assets/logo.jpeg" alt="Balekoğlu Apart Logo" style="width:100%; height:auto; border-radius: 20%;">
     </div>
   </div>
 </section>
 
-<!-- TRUST / AWARDS -->
 <section class="trust">
   <div class="wrap trust-grid reveal">
     <div class="trust-card reveal">
@@ -456,11 +484,10 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
     <div class="leaf-frame reveal">
-      <img src="assets/hakkimizda.png" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+      <img src="assets/hakkimizda.jpeg" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
     </div>
     <div class="reveal">
       <div class="eyebrow" data-i18n="about.eyebrow">HAKKIMIZDA</div>
@@ -471,7 +498,6 @@
   </div>
 </section>
 
-<!-- WHY -->
 <section id="why" style="background:var(--mist);">
   <div class="wrap">
     <div class="section-head reveal">
@@ -504,7 +530,6 @@
   </div>
 </section>
 
-<!-- ROOMS -->
 <section id="rooms">
   <div class="wrap">
     <div class="section-head reveal">
@@ -517,7 +542,7 @@
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r1cap">1-2 Kişilik</span>
           <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
-            <source src="assets/room10.mp4" type="video/mp4">
+            <source src="assets/room10.webm" type="video/webm">
           </video> 
         </div>
         <div class="room-body">
@@ -534,7 +559,7 @@
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r2cap">2-3 Kişilik</span>
           <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
-            <source src="assets/room11.mp4" type="video/mp4">
+            <source src="assets/room11.webm" type="video/webm">
           </video>
         </div>
         <div class="room-body">
@@ -551,7 +576,7 @@
         <div class="room-visual">
           <span class="room-cap" data-i18n="rooms.r3cap">5-6 Kişilik</span>
           <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
-            <source src="assets/room21.mp4" type="video/mp4">
+            <source src="assets/room21.webm" type="video/webm">
           </video>
         </div>
         <div class="room-body">
@@ -568,7 +593,6 @@
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery" style="background:var(--mist);">
   <div class="wrap">
     <div class="section-head reveal">
@@ -577,22 +601,21 @@
     </div>
     <div class="gallery-grid reveal-gallery">
       <div class="g1"><span data-i18n="gallery.tag1">Dış Cephe</span>
-        <img src="assets/hakkimizda.png" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/hakkimizda.jpeg" alt="Balekoğlu Apart Dış Cephe" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div><span data-i18n="gallery.tag2">Salon</span>
-        <img src="assets/salon.png" alt="Balekoğlu Apart Salon" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/salon.jpeg" alt="Balekoğlu Apart Salon" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div><span data-i18n="gallery.tag3">Mutfak</span>
-        <img src="assets/mutfak.png" alt="Balekoğlu Apart Mutfak" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/mutfak.jpeg" alt="Balekoğlu Apart Mutfak" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div><span data-i18n="gallery.tag4">Yatak Odası</span>
-        <img src="assets/yatakodasi.png" alt="Balekoğlu Apart Yatak Odası" style="width:100%; height:100%; object-fit:cover;">
+        <img src="assets/yatakodasi.jpeg" alt="Balekoğlu Apart Yatak Odası" style="width:100%; height:100%; object-fit:cover;">
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="band-forest">
   <div class="wrap contact-grid">
     <div class="reveal">
@@ -616,7 +639,8 @@
       </div>
     </div>
     <div class="map-frame reveal">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3854.6684642204746!2d39.7839692!3d40.990626899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40643b4d8078480b%3A0x5ddefd58386cd0b1!2zQmFsZWtvxJ9sdSBBcGFydG1hbsSx!5e1!3m2!1str!2str!4v1783178614378!5m2!1str!2str" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3854.6684642204746!2d39.7839692!3d40.990626899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40643b4d8078480b%3A0x5ddefd58386cd0b1!2zQmFsZWtvxJ9sdSBBcGFydG1hbsSx!5e1!3m2!1str!2str!4v1783178614378!5m2!1str!2str" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
   </div>
 </section>
 
@@ -625,7 +649,6 @@
     <div class="brand"><span class="dot" style="color:var(--gold);">✦</span> Balekoğlu Apart</div>
     <div data-i18n="footer.copy">© <span id="year"></span> Balekoğlu Apart. Tüm hakları saklıdır.</div>
   </div>
-  <!-- GİZLİ SAYAÇ BURADA -->
   <span class="secret-counter" id="visitorCounter">0</span>
 </footer>
 
