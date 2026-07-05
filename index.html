@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Balekoğlu Apart Trabzon | شقق فندقية طرابزون</title>
 <meta name="description" content="Trabzon merkezde, havalimanına 2 dk, meydana 10 dk mesafede konforlu aile apartı. Comfortable apart hotel in Trabzon. شقق فندقية عائلية في طرابزون، قريبة من الميدان والمطار. إقامة مريحة للعائلات.">
-<meta name="keywords" content="Trabzon apart, Trabzon günlük kiralık, Trabzon family hotel, hotel apartments Trabzon, Trabzon accommodation, شقق فندقية طرابزون, شقق للإيجار في طرابزون, سكن عائلي طرابزون, فنادق طرابزون, طرابزون الميدان, طرابزون المطار, طرابزون تركيا, Trabzon Turkey, Trabzon airport, Trabzon city center, Trabzon city square, Trabzon family apartments, Trabzon family accommodation, Trabzon family hotel, Trabzon family stay, Trabzon family rooms, Trabzon family suites, Trabzon family lodging, Trabzon family vacation rentals, Trabzon family holiday apartments, Trabzon family-friendly apartments, Trabzon family-friendly accommodation, Trabzon family-friendly hotel, Trabzon family-friendly stay, Trabzon family-friendly rooms, Trabzon family-friendly suites, Trabzon family-friendly lodging, Trabzon family-friendly vacation rentals, Trabzon family-friendly holiday apartments, Trabzon family-friendly apartments for rent, Trabzon family-friendly accommodation for rent, Trabzon family-friendly hotel for rent, Trabzon family-friendly stay for rent,Trabzon family-friendly rooms for rent,Trabzon family-friendly suites for rent,Trabzon family-friendly lodging for rent,Trabzon family-friendly vacation rentals for rent,Trabxon family-friendly holiday apartments for rent,Trabxon family-friendly apartments for short-term rent,Trabзон家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁,Trабazon家庭友好型住宿，短期租赁,Trабзон家庭友好型住宿，短期租赁">
+<meta name="keywords" content="Trabzon apart, Trabzon günlük kiralık, Trabzon family hotel, hotel apartments Trabzon, Trabzon accommodation, شقق فندقية طرابزون, شقق للإيجار في طرابزون, سكن عائلي طرابزون, فنادق طرابزون, طرابزون الميدان, طرابزون المطار, طرابزون تركيا, Trabzon Turkey, Trabzon airport, Trabzon city center, Trabzon city square, Trabzon family apartments, Trabzon family accommodation, Trabzon family hotel, Trabzon family stay, Trabzon family rooms, Trabzon family suites, Trabzon family lodging, Trabzon family vacation rentals, Trabzon family holiday apartments, Trabzon family-friendly apartments, Trabzon family-friendly accommodation, Trabzon family-friendly hotel, Trabzon family-friendly stay, Trabzon family-friendly rooms, Trabzon family-friendly suites, Trabzon family-friendly lodging, Trabzon family-friendly vacation rentals, Trabzon family-friendly holiday apartments, Trabzon family-friendly apartments for rent, Trabzon family-friendly accommodation for rent, Trabzon family-friendly hotel for rent, Trabzon family-friendly stay for rent,Trabzon family-friendly rooms for rent,Trabzon family-friendly suites for rent,Trabzon family-friendly lodging for rent,Trabzon family-friendly vacation rentals for rent,Trabxon family-friendly holiday apartments for rent,Trabxon family-friendly apartments for short-term rent">
 <meta name="author" content="Balekoğlu Apart">
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow">
@@ -25,6 +25,7 @@
 <meta name="theme-color" content="#24402F">
 <meta name="msapplication-TileColor" content="#24402F">
 <meta name="msapplication-TileImage" content="https://balekogluapart.com/assets/logo.jpeg">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
 
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@400;500;700;800&family=Cairo:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -38,12 +39,6 @@
     --gold:#B4872F;
     --rust:#9C5636;
     --paper:#FBF8F1;
-
-    --font-display:'Fraunces', serif;
-    --font-body:'Manrope', sans-serif;
-    --font-mono:'JetBrains Mono', monospace;
-
-    /* PC Genişliği Artırıldı (1180px -> 1320px) */
     --container: 1320px;
     --radius: 18px;
   }
@@ -68,7 +63,6 @@
   img,svg{max-width:100%;display:block;}
   a{color:inherit;}
   
-  /* Mobilde Kenarlara Yapışmayı Engellemek İçin width % kullanıldı */
   .wrap{
     width: 90%; 
     max-width: var(--container); 
@@ -95,7 +89,6 @@
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
   }
 
-  /* ---------- SCROLL ANIMATIONS ---------- */
   .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -109,7 +102,6 @@
   .trust-card:nth-child(2), .why-card:nth-child(2), .room-card:nth-child(2) { transition-delay: 0.2s; }
   .why-card:nth-child(3), .room-card:nth-child(3) { transition-delay: 0.3s; }
 
-  /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:100;
     background:rgba(251,248,241,.86);
@@ -135,9 +127,11 @@
     font-size:1.28rem;
     color:var(--forest);
     letter-spacing:.01em;
-    display:flex; align-items:baseline; gap:8px;
+    display:flex; align-items:center; gap:8px;
   }
-  .brand .dot{color:var(--gold); font-size:1.6rem; line-height:0;}
+  .brand img {
+    height: 40px; width: auto; border-radius: 8px; margin-right: 8px;
+  }
   .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
   .nav-links a{
     text-decoration:none; font-size:.92rem; font-weight:600; color:var(--forest-2);
@@ -175,7 +169,6 @@
     .nav-toggle{display:block;}
   }
 
-  /* ---------- HERO ---------- */
   .hero{
     position:relative; overflow:hidden;
     background:linear-gradient(180deg, #EFF3E9 0%, var(--paper) 62%);
@@ -225,7 +218,6 @@
   .hero-art img { transition: transform 0.5s ease; }
   .hero-art:hover img { transform: scale(1.02) rotate(-1deg); }
 
-  /* ---------- SECTION GENERIC ---------- */
   section{padding:96px 0;}
   .section-head{max-width:640px; margin-bottom:56px;}
   .section-head h2{font-size:clamp(1.8rem,3.2vw,2.5rem); font-weight:600; line-height:1.15;}
@@ -234,7 +226,6 @@
   .band-forest .eyebrow{color:#D9BE7A;}
   .band-forest .eyebrow::before{background:#D9BE7A;}
 
-  /* ---------- TRUST / AWARDS ---------- */
   .trust{padding:64px 0;}
   .trust-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
   .trust-card{
@@ -257,7 +248,6 @@
     .trust-grid{grid-template-columns:1fr;}
   }
 
-  /* ---------- ABOUT ---------- */
   .about-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:64px; align-items:center;}
   .about-grid p{color:var(--forest-2); font-size:1.02rem; margin:0 0 16px;}
   .leaf-frame{
@@ -268,7 +258,6 @@
   .leaf-frame img { transition: transform 0.6s ease; }
   .leaf-frame:hover img { transform: scale(1.05); }
 
-  /* ---------- WHY CARDS ---------- */
   .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
   .why-card{
     background:var(--paper); border:1px solid rgba(36,64,47,.12); border-radius:var(--radius);
@@ -280,7 +269,6 @@
   .why-card h3{font-size:1.18rem; font-weight:600; margin-bottom:10px;}
   .why-card p{color:var(--forest-2); font-size:.95rem; margin:0;}
 
-  /* ---------- ROOMS ---------- */
   .room-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
   .room-card{
     border-radius:var(--radius); overflow:hidden; background:var(--paper);
@@ -317,7 +305,6 @@
     padding:5px 10px; border-radius:100px; letter-spacing:.03em;
   }
 
-  /* ---------- GALLERY ---------- */
   .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; gap:16px;}
   .gallery-grid div{
     border-radius:12px; position:relative; overflow:hidden; cursor: pointer;
@@ -348,7 +335,6 @@
   
   .g1{grid-column:span 2; grid-row:span 2;}
 
-  /* ---------- CONTACT ---------- */
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
   .contact-card{
     background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); 
@@ -364,15 +350,13 @@
   .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(.1) contrast(1.05); transition: filter 0.3s ease;}
   .map-frame:hover iframe { filter:grayscale(0) contrast(1); }
 
-  /* ---------- FOOTER & HIDDEN COUNTER ---------- */
   footer{
     background:var(--ink); color:var(--sage); padding:44px 0; font-size:.85rem;
-    position: relative; overflow: hidden; /* Gizli sayaç için gerekli */
+    position: relative; overflow: hidden;
   }
   .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
   footer .brand{color:var(--paper);}
   
-  /* Sadece Senin Göreceğin Silik Sayaç */
   .secret-counter {
     position: absolute;
     bottom: 8px;
@@ -380,13 +364,12 @@
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--sage);
-    opacity: 0.15; /* Neredeyse görünmez */
+    opacity: 0.15; 
     user-select: none;
     cursor: default;
   }
   body[dir="rtl"] .secret-counter { right: auto; left: 12px; }
 
-  /* ---------- MOBİL RESPONSIVE DÜZELTMELERİ ---------- */
   @media (max-width:900px){
     .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
     .why-grid, .room-grid{grid-template-columns:1fr;}
@@ -396,16 +379,13 @@
   }
 
   @media (max-width:600px){
-    /* Mobilde yazıların yan yana gelip kenarlardan taşmasını engeller */
     .contact-row {
       flex-direction: column;
       gap: 4px;
     }
-    /* Mobilde kart iç boşlukları esnetilerek metinlere alan açılır */
     .contact-card, .why-card, .room-body {
       padding: 24px 20px;
     }
-    /* Mobilde aşırı büyük kalan dikey boşluklar daraltıldı */
     section {
       padding: 64px 0;
     }
@@ -419,7 +399,10 @@
 
 <header id="mainHeader">
   <nav class="wrap">
-    <div class="brand"><span class="dot">✦</span> <span data-i18n="brandName">Balekoğlu Apart</span></div>
+    <div class="brand">
+        <img src="assets/logo.jpeg" alt="Logo">
+        <span data-i18n="brandName">Balekoğlu Apart</span>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" data-i18n="nav.about">Hakkımızda</a></li>
       <li><a href="#why" data-i18n="nav.why">Neden Biz</a></li>
@@ -665,7 +648,6 @@
 </footer>
 
 <script>
-// --- İÇERİK VERİLERİ ---
 const i18n = {
   tr: {
     brandName: "Balekoğlu Apart",
@@ -767,6 +749,7 @@ const i18n = {
     "footer.copy":'© <span id="year"></span> باليكوغلو أبارت. جميع الحقوق محفوظة.'
   }
 };
+
 function upCounter(){
   const counterEl = document.getElementById('visitorCounter');
   let count = parseInt(localStorage.getItem('balekoglu-visitor-count') || '0', 10);
@@ -791,9 +774,39 @@ function applyLang(lang){
   localStorage.setItem('balekoglu-lang', lang);
 }
 
-document.querySelectorAll('.lang-switch button').forEach(btn=>{
-  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
-});
+// URL tabanlı dil yönlendirmesi
+function checkUrlAndSetLanguage() {
+  const path = window.location.pathname;
+  let targetLang = 'tr'; // Varsayılan dil
+
+  if (path === '/ar' || path === '/ar/') {
+    targetLang = 'ar';
+  } else if (path === '/en' || path === '/en/') {
+    targetLang = 'en';
+  } else if (path !== '/' && path !== '') {
+    // Geçersiz bir URL girilirse (örneğin /asdasd) ana sayfaya (Türkçe) yönlendir
+    window.location.replace('/');
+    return;
+  }
+
+  applyLang(targetLang);
+
+  // Butonların click olaylarında URL'i de güncellemek için listener'ları ayarlıyoruz
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); // Butonun varsayılan davranışını engelle
+      const selectedLang = btn.dataset.lang;
+      
+      // Dil değiştiğinde URL'i de değiştiriyoruz (Sayfayı yenilemeden)
+      let newPath = '/';
+      if(selectedLang === 'ar') newPath = '/ar';
+      if(selectedLang === 'en') newPath = '/en';
+      
+      window.history.pushState({}, '', newPath);
+      applyLang(selectedLang);
+    });
+  });
+}
 
 document.getElementById('navToggle').addEventListener('click', ()=>{
   document.getElementById('navLinks').classList.toggle('open');
@@ -802,10 +815,10 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
   a.addEventListener('click', ()=> document.getElementById('navLinks').classList.remove('open'));
 });
 
-applyLang('tr');
-
-// --- ANİMASYON KODLARI ---
+// Sayfa yüklendiğinde URL'i kontrol et
 document.addEventListener("DOMContentLoaded", function() {
+  checkUrlAndSetLanguage();
+  upCounter();
   
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
@@ -817,7 +830,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const revealElements = document.querySelectorAll('.reveal, .reveal-gallery');
-  
   const revealOptions = {
     threshold: 0.15,
     rootMargin: "0px 0px -50px 0px"
@@ -825,9 +837,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const revealOnScroll = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        return;
-      } else {
+      if (entry.isIntersecting) {
         entry.target.classList.add('active');
         observer.unobserve(entry.target);
       }
@@ -837,11 +847,6 @@ document.addEventListener("DOMContentLoaded", function() {
   revealElements.forEach(el => {
     revealOnScroll.observe(el);
   });
-
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  upCounter();
 });
 
 </script>
